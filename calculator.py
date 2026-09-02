@@ -2,48 +2,60 @@ import time
 
 dev_debugs = True
 
+
 def main():
     loading(loading_time=2)
+
     first_num = user_input(prompt="FIRST_NUMBER")
     second_num = user_input(prompt="SECOND_NUMBER")
     operation = user_input(prompt="OPERATION")
-    calculate(first_num, second_num, operation)
-    
+
+    answer = calculate(first_num, second_num, operation)
+
+    print(f"Answer: {answer}")
+
+
 def loading(loading_time):
-    print("test terminal loading...")
+    print("Loading...")
     time.sleep(loading_time)
-    print("loaded.")
+    print("Loaded.")
+
 
 def user_input(prompt):
     if prompt == "FIRST_NUMBER":
         first_number = input("First Number: ")
-        validate_input(users_input=first_number)
+        return validate_input(first_number)
 
     if prompt == "SECOND_NUMBER":
         second_number = input("Second Number: ")
-        validate_input(users_input=second_number)
+        return validate_input(second_number)
 
     if prompt == "OPERATION":
-        operation = input("Operation (*,/,+,-): ")
+        return input("Operation (*,/,+,-): ")
 
-def calculate(num1,num2,op):
+
+def calculate(num1, num2, op):
     if op == "+":
-        ans = num1 + num2
-        print(ans)
+        return num1 + num2
     if op == "-":
-        pass
+        return num1 - num2
     if op == "*":
-        pass
+        return num1 * num2
     if op == "/":
-        pass
+        return num1 / num2
+
 
 def validate_input(users_input):
     try:
         number = float(users_input)
-        if dev_debugs == True:
+
+        if dev_debugs:
             print(f"Valid number found: {number}")
+
         return number
+
     except ValueError:
         print("Error: Input contains letters or is not a valid number.")
+
 
 main()
