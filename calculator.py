@@ -1,12 +1,14 @@
 import time
-import math
 
 dev_debugs = True
 
 def main():
     loading(loading_time=2)
-    user_input(prompt="FIRST_NUMBER")
- 
+    first_num = user_input(prompt="FIRST_NUMBER")
+    second_num = user_input(prompt="SECOND_NUMBER")
+    operation = user_input(prompt="OPERATION")
+    calculate(first_num, second_num, operation)
+    
 def loading(loading_time):
     print("test terminal loading...")
     time.sleep(loading_time)
@@ -18,13 +20,22 @@ def user_input(prompt):
         validate_input(users_input=first_number)
 
     if prompt == "SECOND_NUMBER":
-        pass
+        second_number = input("Second Number: ")
+        validate_input(users_input=second_number)
 
-    if prompt == "EQUATION":
-        pass
+    if prompt == "OPERATION":
+        operation = input("Operation (*,/,+,-): ")
 
-def calculate():
-    pass
+def calculate(num1,num2,op):
+    if op == "+":
+        ans = num1 + num2
+        print(ans)
+    if op == "-":
+        pass
+    if op == "*":
+        pass
+    if op == "/":
+        pass
 
 def validate_input(users_input):
     try:
